@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is the state class"""
+"""The state class"""
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
@@ -8,9 +8,6 @@ from os import environ
 
 class State(BaseModel, Base):
     """This is the class for State
-    Attributes:
-        __tablename__: name of MySQL table
-        name: input name
     """
     __tablename__ = 'states'
     name = Column(String(128), nullable=False)
@@ -21,7 +18,6 @@ class State(BaseModel, Base):
         @property
         def cities(self):
             """Getter method for cities
-            Return: list of cities with state_id equal to self.id
             """
             from models import storage
             from models.city import City

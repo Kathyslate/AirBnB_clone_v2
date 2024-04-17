@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is the place class"""
+"""The place class"""
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Float, Integer, ForeignKey, Table
 from sqlalchemy.orm import relationship
@@ -17,18 +17,6 @@ place_amenity = Table('place_amenity', Base.metadata,
 
 class Place(BaseModel, Base):
     """This is the class for Place
-    Attributes:
-        city_id: city id
-        user_id: user id
-        name: name input
-        description: string of description
-        number_rooms: number of room in int
-        number_bathrooms: number of bathrooms in int
-        max_guest: maximum guest in int
-        price_by_night:: pice for a staying in int
-        latitude: latitude in flaot
-        longitude: longitude in float
-        amenity_ids: list of Amenity ids
     """
     __tablename__ = 'places'
 
@@ -53,7 +41,7 @@ class Place(BaseModel, Base):
     else:
         @property
         def reviews(self):
-            """ getter returns list of reviews """
+            """ getter that returns list of reviews """
             list_of_reviews = []
             all_reviews = models.strage.all(Review)
             for review in all_reviews.values():
@@ -63,7 +51,7 @@ class Place(BaseModel, Base):
 
         @property
         def amenities(self):
-            """ getter returns list of amenities """
+            """ getter that returns list of amenities """
             list_of_amenities = []
             all_amenities = models.storage.all(Amenity)
             for key, obj in all_amenities.items():
@@ -73,8 +61,7 @@ class Place(BaseModel, Base):
 
         @amenities.setter
         def amenities(self, obj=None):
-            """Set amenity_ids
-            """
+            """Set amenity_ids for class"""
             if type(obj).__name__ == 'Amenity':
                 new_amenity = 'Amenity' + '.' + obj.id
                 self.amenity_ids.append(new_amenity)
