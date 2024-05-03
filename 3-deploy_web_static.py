@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env bash
 """
 fabric script that distributes an archive to the web servers
 """
