@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirBnB clone</title>
+    <link rel="stylesheet" href="../static/styles/3-footer.css">
+    <link rel="stylesheet" href="../static/styles/3-header.css">
+    <link rel="stylesheet" href="../static/styles/4-common.css">
+    <link rel="stylesheet" href="../static/styles/6-filters.css">
+    <link rel="stylesheet" href="../static/styles/8-places.css">
+</head>
+<body>
+    <header>
+        <div class="logo">AirBnB clone</div>
+    </header>
+    <div class="container">
+        <section class="filters">
+            <div class="locations">
+                <h3>States</h3>
+                <h4>&nbsp;</h4>
+                <ul class="popover">
+                    {% for state in states %}
+                        <li>{{ state.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="amenities">
+                <h3>Amenities</h3>
+                <h4>&nbsp;</h4>
+                <ul class="popover">
+                    {% for amenity in amenities %}
+                        <li>{{ amenity.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <button>Search</button>
+        </section>
+        <section class="places">
+            {% for place in places %}
+                <article class="place">
+                    <div class="price">{{ place.price_by_night }}</div>
+                    <h1>{{ place.name }}</h1>
+                    <div class="information">
+                        <div class="max_guest">
+                            <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                            <br />
+                            {{ place.max_guest }} Guests
+                        </div>
+                        <div class="number_rooms">
+                            <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                            <br />
+                            {{ place.number_rooms }} Bedrooms
+                        </div>
+                        <div class="number_bathrooms">
+                            <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+                            <br />
+                            {{ place.number_bathrooms }} Bathrooms
+                        </div>
+                    </div>
+                    <div class="description">
+                        {{ place.description }}
+                    </div>
+                </article>
+            {% endfor %}
+        </section>
+    </div>
+    <footer>
+        <p>Holberton School</p>
+    </footer>
+</body>
+</html>
